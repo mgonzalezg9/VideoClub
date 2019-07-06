@@ -1,6 +1,7 @@
 package mx.com.gm.peliculas.datos;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,15 +13,9 @@ import java.util.List;
 import mx.com.gm.peliculas.domain.Pelicula;
 
 public class AccesoDatosImpl implements AccesoDatos {
-	@SuppressWarnings("resource")
 	@Override
 	public boolean existe(String nombreArchivo) {
-		try {
-			new FileReader(nombreArchivo);
-			return true;
-		} catch (FileNotFoundException e) {
-			return false;
-		}
+		return (new File(nombreArchivo)).exists();
 	}
 
 	@Override
